@@ -31,7 +31,9 @@
     };
 
     Query.prototype.willHaveResults = function() {
-      return this._isValid() && !this._isEmpty();
+      var firstWord;
+      firstWord = this.value.split(' ')[0];
+      return this._isValid() && !this._isEmpty() && !((firstWord === 'vs' || firstWord === 'at' || firstWord === 'the') && this.value.length < firstWord.length + 3);
     };
 
     Query.prototype._isValid = function() {
